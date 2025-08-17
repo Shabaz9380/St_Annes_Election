@@ -20,6 +20,169 @@
             overflow-x: hidden;
         }
 
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-btn {
+            padding: 8px 18px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(205, 149, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(205, 149, 0, 0.5);
+        }
+
+        /* Hamburger Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #FFD700;
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                position: relative;
+                gap: 10px;
+            }
+
+            .menu-toggle {
+                display: block;
+                margin-left: auto;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: rgba(15, 15, 35, 0.98);
+                border: 1px solid rgba(255, 215, 0, 0.2);
+                border-radius: 12px;
+                padding: 15px;
+                width: min(280px, 90vw);
+                backdrop-filter: blur(15px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                flex-direction: column;
+                gap: 12px;
+                z-index: 1100;
+                animation: slideIn 0.3s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: left;
+                padding: 12px 8px;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(255, 215, 0, 0.15);
+                transform: translateX(5px);
+            }
+
+            .nav-btn {
+                display: none;
+            }
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-btn {
+                padding: 6px 14px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation for mobile menu */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Push page down to avoid overlap */
+        body {
+            padding-top: 70px;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -43,8 +206,9 @@
             position: absolute;
             width: 200%;
             height: 200%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23cd9500' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg' %3E%3Cg fill='none' fill-rule='evenodd' %3E%3Cg fill='%23cd9500' fill-opacity='0.03' %3E%3Ccircle cx='30' cy='30' r='2' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
             animation: float 20s infinite linear;
+
         }
 
         @keyframes float {
@@ -127,14 +291,25 @@
             margin-top: 3rem;
         }
 
+        /* .role-card {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 35, 0.8));
+    border: 1px solid rgba(205, 149, 0, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    justify-items: center;
+    } */
+
         .role-card {
             background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 35, 0.8));
             border: 1px solid rgba(205, 149, 0, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 15px;
+            padding: 1.2rem;
+            /* reduced padding */
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            justify-items: center;
+            backdrop-filter: blur(8px);
+            text-align: center;
         }
 
         .role-card:hover {
@@ -143,22 +318,40 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
+        /* .role-icon {
+    width: max-content;
+    height: 200px;
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+    /* Golden colors */
+        background-size: 200% 200%;
+        /* Make the gradient larger than the element to allow for animation */
+        animation: shine 3s infinite linear;
+        /* Apply the shine animation */
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8rem;
+        margin-bottom: 1rem;
+        }
+
         .role-icon {
-            width: max-content;
-            height: 200px;
+            width: 120px;
+            /* increased size */
+            height: 120px;
             background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
-            /* Golden colors */
             background-size: 200% 200%;
-            /* Make the gradient larger than the element to allow for animation */
             animation: shine 3s infinite linear;
-            /* Apply the shine animation */
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 8rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            /* slightly bigger emoji */
+            margin-bottom: 0.6rem;
         }
+
+
 
         @keyframes shine {
             0% {
@@ -172,17 +365,34 @@
             }
         }
 
+        /* .role-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #cd9500;
+    margin-bottom: 0.5rem;
+    } */
+
         .role-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            /* smaller heading */
             font-weight: 600;
             color: #cd9500;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
+
+
+        /* .role-description {
+    color: #c0c0c0;
+    font-size: 1rem;
+    align-items: center;
+    } */
+
 
         .role-description {
             color: #c0c0c0;
-            font-size: 1rem;
-            align-items: center;
+            font-size: 0.9rem;
+            /* reduced font size */
+            line-height: 1.4;
         }
 
         /* Timeline */
@@ -444,6 +654,26 @@
 </head>
 
 <body>
+    <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <h2 class="nav-logo">Golden Ties</h2>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"
+                aria-controls="primary-nav">☰</button>
+            <nav id="primary-nav" class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#structure">Committee Members</a>
+                <a href="https://youtube.com/@stannesdoddahalahalli?si=l0l4-kxpaiMFKQ80" target="_blank">Events</a>
+                <a href="https://youtube.com/@stannesdoddahalahalli?si=l0l4-kxpaiMFKQ80" target="_blank">Gallery</a>
+                <a href="https://chat.whatsapp.com/LWCqnr9o5tr6noeEAzNmpD">Join Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="https://forms.gle/TP7YfvC2FX9FoojKA" class="nav-btn" target="_blank">Fill Nomination Now</a>
+        </div>
+    </header>
+
     <!-- Navigation Dots -->
     <div class="nav-dots">
         <a href="#hero" class="nav-dot active"></a>
@@ -460,6 +690,28 @@
                 <p class="hero-subtitle">Building Stronger Alumni Connections</p>
                 <a href="https://forms.gle/TP7YfvC2FX9FoojKA" class="cta-button">FILL NOMINATION NOW</a>
             </div>
+        </div>
+    </section>
+
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p style="max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.2rem; color: #c0c0c0;">
+                The <strong>Golden Ties Alumni Committee</strong> is a dedicated body formed to strengthen the lifelong
+                bond between our alma mater and its alumni. We serve as a bridge that connects past generations of
+                students
+                with the present, fostering a culture of unity, mentorship, and collaboration. <br><br>
+
+                Our mission is to preserve cherished memories, support current students through mentorship and guidance,
+                organize reunions and events that bring our community together, and initiate development projects that
+                contribute to the growth of our school. <br><br>
+
+                By uniting alumni across batches, we aspire to create meaningful opportunities, celebrate shared
+                successes,
+                and continue building a legacy that inspires future generations.
+            </p>
         </div>
     </section>
 
@@ -499,9 +751,9 @@
                     </p>
                 </div>
             </div>
-            <h1>(*NOTE: Supporting roles will be appointed later- Media & Communications Coordinator, Membership
+            <h4>(*NOTE: Supporting roles will be appointed later- Media & Communications Coordinator, Membership
                 Coordinator, Logistics Coordinator, ETC...)
-            </h1>
+            </h4>
         </div>
     </section>
 
@@ -520,8 +772,9 @@
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3 class="phase-title">Phase 2: Nominations</h3>
-                        <p class="phase-description">5-7 day window for interested alumni to submit nomination forms
-                            with their vision and plans for their chosen role.</p>
+                        <p class="phase-description">Nomination window will be open for 5 days from the date of
+                            Announcement. Interested alumni to submit their details with their vision and plans for
+                            their chosen role.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -531,13 +784,7 @@
                             finalize the candidate list for each position.</p>
                     </div>
                 </div>
-                <!-- <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="phase-title">Phase 4: Campaigning</h3>
-                        <p class="phase-description">3-5 day period for candidates to share their vision through group
-                            chats and meetings. Focus on positive plans only.</p>
-                    </div>
-                </div> -->
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3 class="phase-title">Phase 4: Election Day</h3>
@@ -592,7 +839,8 @@
                     <a href="#" title="Twitter"><img src="Assets/Twitter.png" alt="Twitter"></a>
                     <a href="#" title="LinkedIn"><img src="Assets/LinkedIn.png" alt="LinkedIn" id="linkedIn"></a>
                     <a href="#" title="Instagram"><img src="Assets/Instagram.png" alt="Instagram"></a>
-                    <a href="#" title="YouTube"><img src="Assets/YouTube.png" alt="YouTube" id="yt"></a>
+                    <a href="https://youtube.com/@stannesdoddahalahalli?si=l0l4-kxpaiMFKQ80" title="YouTube"><img
+                            src="Assets/YouTube.png" alt="YouTube" id="yt"></a>
                 </div>
             </div>
 
@@ -627,9 +875,9 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#committee">Committee Members</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#join">Join Us</a></li>
+                    <li><a href="https://youtube.com/@stannesdoddahalahalli?si=l0l4-kxpaiMFKQ80">Events</a></li>
+                    <li><a href="https://youtube.com/@stannesdoddahalahalli?si=l0l4-kxpaiMFKQ80">Gallery</a></li>
+                    <li><a href="https://chat.whatsapp.com/LWCqnr9o5tr6noeEAzNmpD">Join Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -637,13 +885,71 @@
 
         <div class="footer-bottom">
             <p>&copy; 2025 Golden Ties Committee. All rights reserved. | Uniting alumni, preserving legacy, and creating
-                opportunities for the next generation ❤️</p>
+                opportunities for the next generation.<br>
+                <bold>MADE WITH LOVE BY PASHA❤️</bold>
+            </p>
         </div>
 
     </footer>
 
 
     <script>
+
+        // Responsive navbar toggle
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const primaryNav = document.querySelector('.nav-links');
+
+        if (toggleBtn && primaryNav) {
+            toggleBtn.addEventListener('click', () => {
+                // Toggle the 'active' class to show/hide menu
+                primaryNav.classList.toggle('active');
+
+                // Update aria-expanded for accessibility
+                const isOpen = primaryNav.classList.contains('active');
+                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+                // Change hamburger icon when menu is open
+                toggleBtn.textContent = isOpen ? '✕' : '☰';
+            });
+
+            // Close menu when clicking on a link (for smooth navigation)
+            const navLinks = primaryNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        primaryNav.classList.remove('active');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        toggleBtn.textContent = '☰';
+                    }
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!primaryNav.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    primaryNav.classList.remove('active');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    toggleBtn.textContent = '☰';
+                }
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+
+
         // Navigation dots functionality
         document.addEventListener('DOMContentLoaded', function () {
             const dots = document.querySelectorAll('.nav-dot');
